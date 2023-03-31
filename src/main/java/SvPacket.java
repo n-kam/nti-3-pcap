@@ -1,14 +1,14 @@
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class SvPacket {
     private String macDst;
     private String macSrc;
 
+    private short packetType;
     private short appID;
     private String svID;
+    private short smpCnt;
     private int confRef;
     private int smpSynch;
 
