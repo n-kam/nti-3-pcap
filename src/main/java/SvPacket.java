@@ -5,7 +5,7 @@ public class SvPacket {
     private String macDst;
     private String macSrc;
 
-    private short packetType;
+    private int packetType;
     private short appID;
     private String svID;
     private short smpCnt;
@@ -15,7 +15,7 @@ public class SvPacket {
     private Dataset dataset = new Dataset();
 
     @Data
-    public class Dataset {
+    public static class Dataset {
         private double instIa;
         private int qIa;
         private double instIb;

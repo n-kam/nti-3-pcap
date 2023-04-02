@@ -81,7 +81,7 @@ public class SvPacketListener implements PacketListener {
         while ((packetCounter != packetCounterPrev) | (packetCounter == 0)) {
             packetCounterPrev = packetCounter;
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 interrupted = true;
                 log.debug("Timeout was interrupted");
@@ -122,8 +122,18 @@ public class SvPacketListener implements PacketListener {
             Un = unRmsFilter.rmsValue(dataSet.getInstUn());
 
 
-            // Save normal currents and voltages
+            // Output packet parameters and save normal currents and voltages
             if (packetCounter == measPerPeriod) {
+
+                log.info("Source: {}", svPacket.get().getMacSrc());
+                log.info("Destination: {}", svPacket.get().getMacDst());
+                log.info("Packet type: {}", svPacket.get().getPacketType());
+                log.info("APPID: {}", svPacket.get().getAppID());
+                log.info("svId: {}", svPacket.get().getSvID());
+                log.info("smpCnt: {}", svPacket.get().getSmpCnt());
+                log.info("confRef: {}", svPacket.get().getConfRef());
+                log.info("smpSynch: {}", svPacket.get().getSmpSynch());
+
                 IaNorm = Ia;
                 IbNorm = Ib;
                 IcNorm = Ic;
